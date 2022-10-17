@@ -4,7 +4,9 @@ body{
     color: white;
     font-family: 'Poppins', 'Roboto', sans-serif;
 }
-
+a {
+    text-decoration: none;
+}
 .img-background{
     width: 100vw;
     height: 100vh;
@@ -46,4 +48,8 @@ form{
 }
 .label{
     margin-top: -0.5rem;
+}
+/*----------PRODUTOS-------------*/
+.img-titulo{
+    width: 300px;
 }
