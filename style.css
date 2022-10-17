@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap');  
+body{
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+}
+.logo{
+    border-radius: 50%;
+    width: 150px;
+    margin-top: 2rem;
+}
+.button{
+    width: 90%;
+    padding: 1rem ;
+    margin: 0.5rem;
+    border-radius: 10px;
+}
+.produtos{
+    background-color: rgba(0, 0, 0, 0.815);
+    color: white;
+    font-weight: bold;
+}
+.whatsapp{
+    background-color: rgba(0, 0, 0, 0.815);
+    color: white;
+    font-weight: bold;
+}
+.button-enviar{
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0.815);
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+}
+form{
+    color: rgba(0, 0, 0, 0.438);
+}
+.label{
+    margin-top: -0.5rem;
+}
