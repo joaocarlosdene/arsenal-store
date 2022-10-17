@@ -4,10 +4,19 @@ body{
     color: white;
     font-family: 'Poppins', 'Roboto', sans-serif;
 }
+
+.img-background{
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.1;
+    position: absolute;
+    top: 0;
+    z-index: -100;
+}
 .logo{
     border-radius: 50%;
     width: 150px;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
 }
 .button{
     width: 90%;
