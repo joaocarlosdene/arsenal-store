@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import productsRoutes from './routes/products.js';
+import productRoutes from './routes/productRouter.js';
 import mongoose from 'mongoose';
 
 
@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 
-app.use('/products', productsRoutes);
+app.use('/products', productRoutes);
 
 app.get('/', (req, res) => {
     console.log('[TEST]!');
@@ -31,5 +31,5 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD
     })
     .catch((err) => console.log(err))
 
-//mongodb+srv://andernego48:<password>@arsenalstore.jqiorjd.mongodb.net/?retryWrites=true&w=majority
+
 
