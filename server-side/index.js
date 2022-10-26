@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import productRoutes from './routes/productRouter.js';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 
 import dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
@@ -12,6 +13,8 @@ dotenv.config()
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+app.use(cors())
 
 app.use(bodyParser.json());
 

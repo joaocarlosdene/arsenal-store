@@ -1,10 +1,11 @@
-
+import ProductsPage from './pages/ProductsPage'
 
 
 function App() {
   return (
     <div className="App">
-      <div>Hello World</div>
+      <h1>Hello</h1>
+      <ProductsPage/>
     </div>
   );
 }
