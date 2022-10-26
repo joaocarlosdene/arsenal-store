@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import  getProducts  from '../../../API/API'
+import  { getProducts, postProducts }  from '../../../API/API'
 
 
 const initialState =  {
@@ -23,6 +23,19 @@ const productsSlice = createSlice({
             state.isSuccess = true;
         },
         [getProducts.rejected]: (state, {payload}) =>{
+            state.message = payload;
+            state.loading = false;
+            state.isSuccess = false;
+        },
+        [postProducts.pending]: (state, {payload}) =>{
+            state.loading = true;
+        },
+        [postProducts.fulfilled]: (state, {payload}) =>{
+            state.loading = true;
+            state.data = payload;
+            state.isSuccess = true;
+        },
+        [postProducts.rejected]: (state, {payload}) =>{
             state.message = payload;
             state.loading = false;
             state.isSuccess = false;
