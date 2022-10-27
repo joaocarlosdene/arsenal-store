@@ -9,15 +9,20 @@ const URL = 'http://localhost:5000/products';
 //GET 
  export const getProducts = createAsyncThunk('products/getProducts', async (arg, {rejectWithValue}) => {
     try {
-        const {data} = await axios.get(URL)
-        return data;
+        const response = await axios.get(URL)
+        return response.data;
     } catch (error) {
         rejectWithValue(error.response.data)
     }
 
 })
 
-
+/*export const getProducts = createAsyncThunk('products/getProducts', async () => {
+    return fetch(URL)
+    .then((resp)=> resp.json())
+    .catch((error)=> console.log(error));
+})
+*/
 
 //POST
 export const postProducts = createAsyncThunk('products/postProducts', async (data) => {

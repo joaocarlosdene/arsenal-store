@@ -3,9 +3,7 @@ import  { getProducts, postProducts }  from '../../../API/API'
 
 
 const initialState =  {
-    data: [],
-    isSuccess:false,
-    message: '',
+    data: [{_id:'',foto:'', marca:'',preco:'1'}],
     loading:false,
 };
 
@@ -13,11 +11,41 @@ const productsSlice = createSlice({
     name: 'products',
     initialState,
     reducers:{},
-    extraReducers: {
-        [getProducts.pending]: (state, {payload}) =>{
+    extraReducers (builder) {
+        builder.addCase(getProducts.pending, (state, action) =>{
+                    state.loading = true;
+        })
+                .addCase(getProducts.fulfilled, (state, action) =>{
+                    
+                    state.loading = false;
+                    state.data = action.payload;
+                    
+        })
+                .addCase(getProducts.rejected, (state, action) =>{
+                    
+                    state.loading = false;
+                    
+        });
+        builder.addCase(postProducts.pending, (state, action) =>{
+            state.loading = true;
+        })
+        .addCase(postProducts.fulfilled, (state, action) =>{
+            state.loading = true;
+            state.data = action.payload;
+            state.status = true;
+        })
+        .addCase(postProducts.rejected, (state, action) =>{
+            state.message = action.payload;
+            state.loading = false;
+            state.status = false;
+        });
+    }
+    
+    
+        /*[getProducts.pending]: (state, {payload}) =>{
             state.loading = true;
         },
-        [getProducts.fulfilled]: (state, {payload}) =>{
+        /*[getProducts.fulfilled]: (state, {payload}) =>{
             state.loading = true;
             state.data = payload;
             state.isSuccess = true;
@@ -27,6 +55,7 @@ const productsSlice = createSlice({
             state.loading = false;
             state.isSuccess = false;
         },
+        
         [postProducts.pending]: (state, {payload}) =>{
             state.loading = true;
         },
@@ -39,10 +68,13 @@ const productsSlice = createSlice({
             state.message = payload;
             state.loading = false;
             state.isSuccess = false;
-        },
-    }
+        },*/
+    
     
 })
 
+
+
+export const selectAllproducts = (state) => state.products;
 
 export default productsSlice.reducer;
