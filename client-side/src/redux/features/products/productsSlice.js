@@ -3,7 +3,7 @@ import  { getProducts, postProducts }  from '../../../API/API'
 
 
 const initialState =  {
-    data: [{_id:'',foto:'', marca:'',preco:'1'}],
+    data: [{_id:'',foto:'', marca:'',preco:''}],
     loading:false,
 };
 
@@ -73,7 +73,10 @@ const productsSlice = createSlice({
     
 })
 
-
+export const selectProductById = (state, productId) => {
+    state.products.find(product => product._id ===productId)
+}
+ 
 
 export const selectAllproducts = (state) => state.products;
 

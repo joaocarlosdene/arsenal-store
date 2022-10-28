@@ -1,0 +1,64 @@
+body{
+    background-color: black;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    padding: 0 10%;
+    margin: 3rem auto;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+table thead{
+    background-color: #3B3BF1;
+}
+
+table thead tr th{
+    font-size: 1.3rem;
+    font-weight: medium;
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+}
+table tbody tr td{
+    color: #f1f1f1;
+    background-color: #3c3f44;
+}
+table tbody tr td p{
+    border: 1px solid whitesmoke;
+    margin-bottom: 0;
+    padding: 1rem;
+    
+}
+.tda{
+    background-color: #FF1026;
+    font-weight: bold;
+}
+.link:hover{
+    background-color: #3B3BF1;
+}
+.tda a:hover{
+    cursor: pointer;
+    display: inline-block;
+}
+
+/*------RESPONSIVIDADE--------*/
+@media (max-width:768px) {
+    
+    table thead{
+        display: none;
+    }
+    table, table tbody, table tr, table td{
+        flex-direction: column-reverse;
+        display: inline-block;
+        width: 100%;
+        
+    }
+    table tr{
+        margin-bottom: 2rem;
+    }
+    
+}
