@@ -8,6 +8,10 @@ import { postProducts } from '../../API/API';
 
 const Form = () => {
 
+    const reload = async () => {
+      await window.location.reload();
+    }
+
     const [postData, setPostData] = useState({
         marca:'',
         preco:'',
@@ -33,7 +37,7 @@ const Form = () => {
        
        <div className='justify-content-center'>
 
-       <input className={Styles.enviar} type="submit" value="Enviar"></input>
+       <button className={Styles.enviar} type="submit" onClick={reload} value="Enviar">Enviar</button>
        </div>
 
 

@@ -34,3 +34,13 @@ export const postProducts = createAsyncThunk('products/postProducts', async (dat
     }
 });
 
+// DELETE
+export const deleteProducts = createAsyncThunk('products/deleteProducts', async (id, {rejectWithValue}) => {
+    try {
+        const response = await axios.delete(`${URL}/${id}`)
+        return response.data;
+    } catch (error) {
+        rejectWithValue(error.response.data)
+    }
+
+})

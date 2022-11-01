@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import  { getProducts, postProducts }  from '../../../API/API'
+import  { getProducts, postProducts, deleteProducts }  from '../../../API/API'
 
 
 const initialState =  {
@@ -12,6 +12,7 @@ const productsSlice = createSlice({
     initialState,
     reducers:{},
     extraReducers (builder) {
+        //GET
         builder.addCase(getProducts.pending, (state, action) =>{
                     state.loading = true;
         })
@@ -26,6 +27,8 @@ const productsSlice = createSlice({
                     state.loading = false;
                     
         });
+
+        //POST
         builder.addCase(postProducts.pending, (state, action) =>{
             state.loading = true;
         })
@@ -38,6 +41,27 @@ const productsSlice = createSlice({
             state.message = action.payload;
             state.loading = false;
             state.status = false;
+        });
+
+        //DELETE
+        builder.addCase(deleteProducts.pending, (state, action) =>{
+            state.loading = true;
+        })
+        .addCase(deleteProducts.fulfilled, (state, action) =>{
+            
+            state.loading = false;
+            console.log("action", action);
+            const {arg} = action.meta;
+            if (arg) {
+                state.data = state.data.filter((item) => item._id !== arg)
+            }
+            
+            
+        })
+        .addCase(deleteProducts.rejected, (state, action) =>{
+            
+            state.loading = false;
+            
         });
     }
     
@@ -73,9 +97,7 @@ const productsSlice = createSlice({
     
 })
 
-export const selectProductById = (state, productId) => {
-    state.products.find(product => product._id ===productId)
-}
+
  
 
 export const selectAllproducts = (state) => state.products;

@@ -3,7 +3,7 @@ body{
     font-family: sans-serif;
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 0; 
 }
 .container{
     padding: 0 10%;
@@ -11,7 +11,8 @@ body{
 }
 table{
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse; 
+    position: relative;
 }
 table thead{
     background-color: #3B3BF1;
@@ -42,23 +43,15 @@ table tbody tr td p{
 }
 .tda a:hover{
     cursor: pointer;
-    display: inline-block;
 }
 
 /*------RESPONSIVIDADE--------*/
 @media (max-width:768px) {
     
-    table thead{
-        display: none;
-    }
-    table, table tbody, table tr, table td{
-        flex-direction: column-reverse;
-        display: inline-block;
-        width: 100%;
-        
-    }
-    table tr{
+    .container{
+        overflow-x: auto;
         margin-bottom: 2rem;
     }
+
     
 }
