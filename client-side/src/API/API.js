@@ -34,6 +34,18 @@ export const postProducts = createAsyncThunk('products/postProducts', async (dat
     }
 });
 
+//UPDATE
+export const updateProducts = createAsyncThunk('products/updateProducts', async (Productsdata, {rejectWithValue}) => {
+    const {_id,marca, foto, preco} = Productsdata
+    try {
+        const response = await axios.patch(`${URL}/${_id}`, {marca,foto, preco})
+        return response.data;
+    } catch (error) {
+        rejectWithValue(error.response.data)
+    }
+
+})
+
 // DELETE
 export const deleteProducts = createAsyncThunk('products/deleteProducts', async (id, {rejectWithValue}) => {
     try {

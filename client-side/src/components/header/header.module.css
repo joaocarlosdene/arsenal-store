@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap');  
+.logo{
+    border-radius: 50%;
+    width: 150px;
+    margin-top: 1rem;
+    text-align: center;
+}
+.title{
+    color: #18BB84;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+}
+.insta{
+    color: gray;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    font-weight: bold;
+}

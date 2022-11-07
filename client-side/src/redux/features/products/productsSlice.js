@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import  { getProducts, postProducts, deleteProducts }  from '../../../API/API'
+import  { getProducts, postProducts, deleteProducts, updateProducts }  from '../../../API/API'
 
 
 const initialState =  {
@@ -12,7 +12,7 @@ const productsSlice = createSlice({
     initialState,
     reducers:{},
     extraReducers (builder) {
-        //GET
+        //GET -------------------------------------------------------------
         builder.addCase(getProducts.pending, (state, action) =>{
                     state.loading = true;
         })
@@ -28,7 +28,7 @@ const productsSlice = createSlice({
                     
         });
 
-        //POST
+        //POST -------------------------------------------------------------
         builder.addCase(postProducts.pending, (state, action) =>{
             state.loading = true;
         })
@@ -43,7 +43,29 @@ const productsSlice = createSlice({
             state.status = false;
         });
 
-        //DELETE
+        //UPDATE ----------------------------------------------------------
+        builder.addCase(updateProducts.pending, (state, action) =>{
+            state.loading = true;
+        })
+        .addCase(updateProducts.fulfilled, (state, action) =>{
+            
+            state.loading = false;
+            console.log("action", action);
+            const {arg:{id}} = action.meta;
+            if (id) {
+                state.data = state.data.map((item) => item._id === id ? action.payload : item)
+            }
+            
+            
+        })
+        .addCase(updateProducts.rejected, (state, action) =>{
+            
+            state.loading = false;
+            
+        });
+
+
+        //DELETE ----------------------------------------------------
         builder.addCase(deleteProducts.pending, (state, action) =>{
             state.loading = true;
         })

@@ -3,12 +3,12 @@ import {useSelector} from 'react-redux';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getProducts, deleteProducts } from '../API/API';
-import Form from '../components/form/form';
+import Header from '../components/header/header';
 import { selectAllproducts } from '../redux/features/products/productsSlice';
-import './ProductsPage.css'
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Styles from './ProductsPage.module.css'
+import { Link } from "react-router-dom";
+import background from '../images/background.png'
+
 
 
 const ProductsList = () =>{
@@ -29,27 +29,36 @@ const ProductsList = () =>{
     }
     
     return (
-        <div>
-            <Form/>
-            <div className='container'>
+        <div className='text-center'>
+            <img className={Styles.img_background} src={background}></img>
+            <Header/>
+            <Link  to='/addProducts' ><button className={Styles.adicionar} >Adicionar Produto</button></Link>
+            <div className={Styles.container}>
+            
                 <table className='text-center table-resp'>
-                    <thead>
+                
+                    <thead className={Styles.thead}>
                     <tr>
-                        <th>Marca</th>
-                        <th>Preco</th>
-                        <th>Foto</th>
-                        <th></th>
-                        <th></th>
+                        <th className='th'>Marca</th>
+                        <th className='th'>Preco</th>
+                        <th className='th'>Foto</th>
+                        <th className='th'>#</th>
+                        <th className='th'>#</th>
                     </tr>
                     </thead>
-                    <tbody> 
-                        <tr>
-                            <td className='td'>{data.map((item) =>(<p key={item._id} >{item.marca}</p>))}</td>
-                            <td className='td'>{data.map((item) =>(<p key={item._id} >{item.preco}</p>))}</td>
-                            <td className='td'>{data.map((item) =>(<p key={item._id} >{item.foto.slice(0,15)}</p>))} </td>
-                            <td className='tda'>{data.map((item) =>(<p className='link' key={item._id} ><a>Editar</a></p>))}</td>
-                            <td className='tda'>{data.map((item) =>(<p className='link' key={item._id} ><a onClick={() => handleDelete(item._id)}>Excluir</a></p>))}</td>  
+                    <tbody className={Styles.tbody}> 
+                    {data.map((item) =>(
+                        <tr key={item._id}>
+                            
+                            <td data-label='MARCA:' className={Styles.td}>{item.marca}</td>
+                            <td data-label='PRECO:' className={Styles.td}>{item.preco}</td>
+                            <td data-label='FOTO:' className={Styles.td}>{item.foto.slice(0,15)}</td>
+                            <td><button className={Styles.editar}>Editar</button></td>
+                            <td ><button className={Styles.excluir} onClick={() => handleDelete(item._id)}>Excluir</button></td>
                         </tr>
+                    ))}
+                            
+                       
                     </tbody>
                 </table>
                 </div>
