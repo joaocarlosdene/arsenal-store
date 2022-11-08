@@ -6,6 +6,7 @@ import { postProducts } from '../../API/API';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -13,7 +14,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 const Formulario = () => {
 
-    
+  const navigate = useNavigate();
 
     const [postData, setPostData] = useState({
         marca:'',
@@ -27,6 +28,8 @@ const Formulario = () => {
         e.preventDefault();
 
         dispatch(postProducts(postData))
+        navigate("/")
+        window.location.reload();
     }
   return (
     <div className='d-flex justify-content-center'>

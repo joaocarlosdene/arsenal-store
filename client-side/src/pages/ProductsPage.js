@@ -43,7 +43,7 @@ const ProductsList = () =>{
                         <th className='th'>Preco</th>
                         <th className='th'>Foto</th>
                         <th className='th'>#</th>
-                        <th className='th'>#</th>
+                        
                     </tr>
                     </thead>
                     <tbody className={Styles.tbody}> 
@@ -53,8 +53,12 @@ const ProductsList = () =>{
                             <td data-label='MARCA:' className={Styles.td}>{item.marca}</td>
                             <td data-label='PRECO:' className={Styles.td}>{item.preco}</td>
                             <td data-label='FOTO:' className={Styles.td}>{item.foto.slice(0,15)}</td>
-                            <td><button className={Styles.editar}>Editar</button></td>
-                            <td ><button className={Styles.excluir} onClick={() => handleDelete(item._id)}>Excluir</button></td>
+                            <td className={Styles.tbutton}>
+                                <button className={Styles.editar}>Editar</button>
+                                <button className={Styles.ver}>Ver</button>
+                                <button className={Styles.excluir} onClick={() => handleDelete(item._id)}>Excluir</button>
+                                
+                            </td>
                         </tr>
                     ))}
                             

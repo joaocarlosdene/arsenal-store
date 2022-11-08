@@ -5,6 +5,7 @@ body{
     margin: 0;
     padding: 0; 
 }
+
 .img_background{
     width: 100%;
     height: 100%;
@@ -47,8 +48,15 @@ th{
     vertical-align: top;
     border: 1px solid whitesmoke;
 }
+.tbutton{
+    background-color: #3c3f44;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    padding-top: 0.8rem;
+    text-align: center;
+}
 
-td{
+.td{
     color: #f1f1f1;
     background-color: #3c3f44;
     border: 1px solid whitesmoke;
@@ -64,23 +72,38 @@ td{
     background-color: #FF1026;
     font-weight: bold;
     line-height: 35px;
-    padding: 0rem 3rem;
+    padding: 0rem 1rem;
     margin: 0;
     color: whitesmoke;
     border-radius: 10px;
     vertical-align: middle;
     margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+.ver{
+    background-color: black;
+    font-weight: bold;
+    line-height: 35px;
+    padding: 0rem 2rem;
+    color: whitesmoke;
+    border-radius: 10px;
+    vertical-align: middle;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    text-transform: uppercase;
 }
 .editar{
     background-color: #3B3BF1;
     font-weight: bold;
     line-height: 35px;
-    padding: 0rem 3rem;
+    padding: 0rem 1rem;
     margin: 0;
     color: whitesmoke;
     border-radius: 10px;
     vertical-align: middle;
     margin-bottom: 0.5rem;
+    text-transform: uppercase;
 }
 .link:hover{
     background-color: #3B3BF1;
@@ -107,7 +130,9 @@ td{
     tr{
         margin-bottom: 2rem;
     }
-
+    .tbutton{
+        padding-right: 0;
+    }
     .container{
         padding: 1rem;
         
