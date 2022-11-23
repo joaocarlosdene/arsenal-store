@@ -1,20 +1,19 @@
-import React, {useState} from 'react'
-import Styles from './form.module.css'
+import React from 'react'
+import {useState} from 'react'
+import Styles from './EditProducts.module.css'
 import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux'
-import { postProducts } from '../../API/API';
+import { postProducts } from '../API/API';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { useNavigate } from "react-router-dom";
+import Header from '../components/header/header';
+import background from '../images/background.png'
 
-
-
-
-
-const Formulario = () => {
-
-  const navigate = useNavigate();
+const EditProducts = () => {
+ 
+    const navigate = useNavigate();
 
     const [postData, setPostData] = useState({
         marca:'',
@@ -32,7 +31,9 @@ const Formulario = () => {
         window.location.reload();
     }
   return (
-    <div className='d-flex justify-content-center'>
+    <div className='text-center'>
+    <img className={Styles.img_background} src={background}></img>
+    <Header/>
     <form className={Styles.formulario} onSubmit={handleSubmit}>
       <FloatingLabel
           controlId="floatingInput"
@@ -72,4 +73,4 @@ const Formulario = () => {
   )
 }
 
-export default Formulario;
+export default EditProducts

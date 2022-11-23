@@ -51,9 +51,9 @@ const productsSlice = createSlice({
             
             state.loading = false;
             console.log("action", action);
-            const {arg:{id}} = action.meta;
-            if (id) {
-                state.data = state.data.map((item) => item._id === id ? action.payload : item)
+            const {arg} = action.meta;
+            if (arg) {
+                state.data = state.data.map((item) => item._id === arg ? action.payload : item)
             }
             
             
@@ -121,7 +121,10 @@ const productsSlice = createSlice({
 
 
  
-
+ 
 export const selectAllproducts = (state) => state.products;
+export const selectProductById = (state) => state.products._id
+
 
 export default productsSlice.reducer;
+
