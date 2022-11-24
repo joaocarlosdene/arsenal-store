@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux';
-import { getProducts, deleteProducts } from '../API/API';
+import { getProducts} from '../API/API';
 import { useEffect } from 'react';
-import { selectAllproducts, selectProductById } from '../redux/features/products/productsSlice'
+import { selectAllproducts} from '../redux/features/products/productsSlice'
 import { useParams } from 'react-router-dom'
 import Styles from './ViewProduct.module.css'
 import { Link } from 'react-router-dom';
@@ -19,9 +19,7 @@ const ViewProduct = () => {
 
   const { data } = useSelector(selectAllproducts)
   const { productId } = useParams()
-  //const {_id} = useSelector(selectProductById)
-  //console.log(productId)
-  //  const Products = useSelector((state) => selectAllproducts (state, Number (productId)))
+
 
 
 
