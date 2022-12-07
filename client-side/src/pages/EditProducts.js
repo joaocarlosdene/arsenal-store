@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import Styles from './EditProducts.module.css'
 import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux'
-import { postProducts } from '../API/API';
+import { updateProducts } from '../API/API';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
@@ -20,26 +20,25 @@ const EditProducts = () => {
     const { productId } = useParams()
     const { data } = useSelector(selectAllproducts)
 
-    const [marca, setMarca] = useState(data.marca)
-    const [preco, setPreco] = useState(data.preco)
-    const [foto, setFoto] = useState(data.foto)
+    const eachProduct = data.filter(item => item._id === productId)
+
+    console.log(eachProduct[0].foto)
+    const [marca, setMarca] = useState(eachProduct[0].marca)
+    const [preco, setPreco] = useState(eachProduct[0].preco)
+    const [foto, setFoto] = useState(eachProduct[0].foto)
     
     const onMarcaChanged = e => setMarca(e.target.value)
     const onPrecoChanged = e => setPreco(e.target.value)
     const onFotoChanged = e => setFoto(e.target.value)
 
     const dispatch = useDispatch();
-    const [postData, setPostData] = useState({
-        marca:'',
-        preco:'',
-        foto:''
-    })
+    
 
 
     const handleSubmit = (e) =>{
         e.preventDefault();
 
-        dispatch(postProducts(postData))
+        dispatch(updateProducts(marca, preco, foto))
         navigate("/")
         window.location.reload();
     }
@@ -62,14 +61,15 @@ const EditProducts = () => {
           className="mb-3"
         >
        <div>
-        <Form.Control className={Styles.input} type='text' required name='preco' label='PRECO' placeholder='PRECO:' placeho="true"  value={postData.preco} onChange={onPrecoChanged}/>
+        <Form.Control className={Styles.input} type='text' required name='preco' label='PRECO' placeholder='PRECO:' placeho="true"  value={preco} onChange={onPrecoChanged}/>
         </div>
         </FloatingLabel>
        <div className={Styles.img_file}>
        <FileBase
         type='file'
         multiple={false}
-        onDone={({base64}) => setPostData({...postData, foto: base64})}
+        onChange={onFotoChanged}
+        onDone={({base64}) =>  setFoto({...foto, foto: base64})}
         required
         />
        </div>
