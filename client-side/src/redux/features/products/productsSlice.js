@@ -45,16 +45,17 @@ const productsSlice = createSlice({
 
         //UPDATE ----------------------------------------------------------
         builder.addCase(updateProducts.pending, (state, action) =>{
-            state.loading = true;
+            state.loading = false;
         })
         .addCase(updateProducts.fulfilled, (state, action) =>{
             
             state.loading = false;
             console.log("action", action);
-            const {arg} = action.meta;
-            if (arg) {
-                state.data = state.data.map((item) => item._id === arg ? action.payload : item)
-            }
+            const {_id} = action.payload;
+
+            
+            const products = state.data.filter((item) => item._id === _id)
+            state.data = [...products, action.payload];
             
             
         })

@@ -22,10 +22,10 @@ const EditProducts = () => {
 
     const eachProduct = data.filter(item => item._id === productId)
 
-    console.log(eachProduct[0].foto)
-    const [marca, setMarca] = useState(eachProduct[0].marca)
-    const [preco, setPreco] = useState(eachProduct[0].preco)
-    const [foto, setFoto] = useState(eachProduct[0].foto)
+    
+    const [marca, setMarca] = useState()
+    const [preco, setPreco] = useState()
+    const [foto, setFoto] = useState()
     
     const onMarcaChanged = e => setMarca(e.target.value)
     const onPrecoChanged = e => setPreco(e.target.value)
@@ -33,12 +33,17 @@ const EditProducts = () => {
 
     const dispatch = useDispatch();
     
+    const [postData, setPostData] = useState({
+      marca: eachProduct[0].marca,
+      preco:eachProduct[0].preco,
+      foto: eachProduct[0].foto
+  })
 
-
+    const canSave = Boolean(postData.marca) && Boolean(postData.preco) && Boolean(postData.foto)
     const handleSubmit = (e) =>{
         e.preventDefault();
 
-        dispatch(updateProducts(marca, preco, foto))
+        dispatch(updateProducts(postData))
         navigate("/")
         window.location.reload();
     }
@@ -53,7 +58,7 @@ const EditProducts = () => {
           className="mb-3"
         >
        <div>
-        <Form.Control className={Styles.input} type='text' required name='marca' placeholder='MARCA:' placeho="true"  value={marca} onChange={onMarcaChanged}/>
+        <Form.Control className={Styles.input} type='text' required name='marca' placeholder='MARCA:' placeho="true"  value={postData.marca} onChange={(e) => setPostData({...postData, marca: e.target.value})}/>
         </div>
         </FloatingLabel>
         <FloatingLabel
@@ -61,21 +66,21 @@ const EditProducts = () => {
           className="mb-3"
         >
        <div>
-        <Form.Control className={Styles.input} type='text' required name='preco' label='PRECO' placeholder='PRECO:' placeho="true"  value={preco} onChange={onPrecoChanged}/>
+        <Form.Control className={Styles.input} type='text' required name='preco' label='PRECO' placeholder='PRECO:' placeho="true"  value={postData.preco} onChange={(e) => setPostData({...postData, preco: e.target.value})}/>
         </div>
         </FloatingLabel>
        <div className={Styles.img_file}>
        <FileBase
         type='file'
         multiple={false}
-        onChange={onFotoChanged}
-        onDone={({base64}) =>  setFoto({...foto, foto: base64})}
+        value={postData.foto}
+        onDone={({base64}) =>  setPostData({...postData, foto: base64})}
         required
         />
        </div>
        <div className='justify-content-center'>
 
-       <button className={Styles.enviar} type="submit" to='/' value="Enviar">Enviar</button>
+       <button className={Styles.enviar} type="submit" to='/' value="Enviar" disabled={!canSave}>Enviar</button>
        </div>
        <div className='justify-content-center'>
 
