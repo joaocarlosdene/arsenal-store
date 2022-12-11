@@ -51,11 +51,12 @@ const productsSlice = createSlice({
             
             state.loading = false;
             console.log("action", action);
-            const {_id} = action.payload;
+            const {_id, marca, preco, foto} = action.payload.payload;
 
             
-            const products = state.data.filter((item) => item._id === _id)
-            state.data = [...products, action.payload];
+            const product = state.products.filter((item) => item._id !== _id)
+            
+            state.products = [...product, action.payload];
             
             
         })
