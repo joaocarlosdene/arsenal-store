@@ -14,7 +14,7 @@ const productsSlice = createSlice({
     extraReducers (builder) {
         //GET -------------------------------------------------------------
         builder.addCase(getProducts.pending, (state, action) =>{
-                    state.loading = true;
+                    state.loading = true;   
         })
                 .addCase(getProducts.fulfilled, (state, action) =>{
                     
@@ -45,7 +45,7 @@ const productsSlice = createSlice({
 
         //UPDATE ----------------------------------------------------------
         builder.addCase(updateProducts.pending, (state, action) =>{
-            state.loading = false;
+            state.loading = true;
         })
         .addCase(updateProducts.fulfilled, (state, action) =>{
             

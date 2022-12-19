@@ -8,6 +8,7 @@ import Styles from './ViewProduct.module.css'
 import { Link } from 'react-router-dom';
 import background from '../images/background.png'
 
+
 import React from 'react'
 import Header from '../components/header/header';
 
@@ -19,6 +20,7 @@ const ViewProduct = () => {
 
   const { data } = useSelector(selectAllproducts)
   const { productId } = useParams()
+  
 
 
 

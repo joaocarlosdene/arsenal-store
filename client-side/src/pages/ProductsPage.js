@@ -4,10 +4,11 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getProducts, deleteProducts } from '../API/API';
 import Header from '../components/header/header';
-import { selectAllproducts } from '../redux/features/products/productsSlice';
+import productsSlice, { selectAllproducts } from '../redux/features/products/productsSlice';
 import Styles from './ProductsPage.module.css'
 import { Link } from "react-router-dom";
 import background from '../images/background.png'
+import LoadingSpinner from '../components/loadingSpinner/loadingSpinner';
 
 
 
@@ -16,6 +17,8 @@ const ProductsList = () =>{
     const dispatch = useDispatch();
 
     useEffect(() => {dispatch(getProducts())}, [dispatch]);
+
+    const products = useSelector((state) => state.products)
 
 
     const {data} = useSelector(selectAllproducts)
@@ -30,9 +33,11 @@ const ProductsList = () =>{
     
     return (
         <div className='text-center'>
+            {products.loading && <LoadingSpinner/>}
             <img className={Styles.img_background} src={background}></img>
             <Header/>
             <Link  to='/addProducts' ><button className={Styles.adicionar} >Adicionar Produto</button></Link>
+            
             <div className={Styles.container}>
             
                 <table className='text-center table-resp'>

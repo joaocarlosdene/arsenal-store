@@ -45,7 +45,7 @@ const EditProducts = () => {
         e.preventDefault();
 
         dispatch(updateProducts(postData))
-      navigate(`/addproducts/${productId}`)
+      navigate('/')
       window.location.reload();
     }
   return (
