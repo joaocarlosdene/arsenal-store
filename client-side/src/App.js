@@ -1,20 +1,25 @@
 import ProductsPage from './pages/ProductsPage'
 import AddProducts from './pages/AddProducts';
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import ViewProduct from './pages/ViewProduct';
 import EditProducts from './pages/EditProducts';
+import { useSelector, useDispatch } from 'react-redux'
+import Login from './pages/login'
 
 
 function App() {
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { user } = useSelector((state) => state.auth)
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<ProductsPage />} />
-        <Route path='/editproduct/:productId' element={<EditProducts/>}/>
-        <Route path="/addProducts">
-          <Route index element={<AddProducts />} />
-          <Route path=':productId' element={<ViewProduct />} />
-        </Route>
+        <Route path='/login' element={<Login />} />
+        <Route path="/" element={!user ? <ProductsPage /> : <Navigate to='/login' />} />
+        <Route path='/editproduct/:productId' element={!user ? <EditProducts /> : <Navigate to='/login' />} />
+        <Route path="/addProducts" index element={!user ? <AddProducts /> : <Navigate to='/login' />} />
+        <Route path=':productId' element={!user ? <ViewProduct /> : <Navigate to='/login' />} />
       </Routes>
 
     </div>

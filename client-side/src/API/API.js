@@ -4,6 +4,8 @@ import axios from 'axios';
 
 
 const URL = 'http://localhost:5000/products';
+const Login = 'http://localhost:5000/users/login'
+const SignUp = 'http://localhost:5000/users/signUp'
 
 
 //GET 
@@ -28,6 +30,25 @@ const URL = 'http://localhost:5000/products';
 export const postProducts = createAsyncThunk('products/postProducts', async (data) => {
     try {
         const response = await axios.post(URL, data)
+        return response.data;
+    } catch (error) {
+        console.error(error)
+    }
+});
+
+//POST LOGIN
+export const postLogin = createAsyncThunk('users/postLogin', async (data) => {
+    try {
+        const response = await axios.post(Login, data)
+        return response.data;
+    } catch (error) {
+        console.error(error)
+    }
+});
+//POST SIGNUP
+export const postSignup = createAsyncThunk('users/postSignup', async (data) => {
+    try {
+        const response = await axios.post(SignUp, data)
         return response.data;
     } catch (error) {
         console.error(error)

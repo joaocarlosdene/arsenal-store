@@ -60,7 +60,7 @@ const ProductsList = () =>{
                             <td data-label='FOTO:' className={Styles.td}>{item.foto.slice(0,15)}</td>
                             <td className={Styles.tbutton}>
                                 <Link to={`/editproduct/${item._id}`}><button className={Styles.editar}>Editar</button></Link>
-                                <Link to={`/addproducts/${item._id}`}><button className={Styles.ver}>Ver</button></Link>
+                                <Link to={`/${item._id}`}><button className={Styles.ver}>Ver</button></Link>
                                 <button className={Styles.excluir} onClick={() => handleDelete(item._id)}>Excluir</button>
                                 
                             </td>
