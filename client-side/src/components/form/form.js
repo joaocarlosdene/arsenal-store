@@ -24,7 +24,7 @@ const Formulario = () => {
 
   const dispatch = useDispatch();
 
-  //const canSave = Boolean(postData.marca) && Boolean(postData.preco) && Boolean(postData.foto)
+  const canSave = Boolean(postData.marca) && Boolean(postData.preco) && Boolean(postData.foto)
 
   const handleSubmit = (e) => {
     e.preventDefault();

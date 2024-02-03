@@ -34,6 +34,7 @@ export const postProducts = createAsyncThunk('products/postProducts', async (dat
         return response.data;
     } catch (error) {
         console.error(error)
+        console.log("Deu errado")
     }
 });
 
