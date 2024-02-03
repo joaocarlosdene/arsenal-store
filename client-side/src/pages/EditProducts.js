@@ -44,7 +44,8 @@ const EditProducts = () => {
     const handleSubmit = (e) =>{
         e.preventDefault();
 
-        dispatch(updateProducts(postData))
+      dispatch(updateProducts(postData))
+      alert("Produto editado com sucesso")
       navigate('/')
       window.location.reload();
     }

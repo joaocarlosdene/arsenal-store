@@ -3,7 +3,7 @@ import Styles from './form.module.css'
 import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux'
 import { postProducts } from '../../API/API';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { useNavigate } from "react-router-dom";
@@ -31,6 +31,8 @@ const Formulario = () => {
 
     dispatch(postProducts(postData))
     alert("Produto adicionado com sucesso")
+    navigate("/")
+    location.reload()
   }
   return (
     <div className='d-flex justify-content-center'>
@@ -72,7 +74,8 @@ const Formulario = () => {
         </div>
         <div className='justify-content-center'>
 
-          <Link to='/' ><button className={Styles.cancelar} >Cancelar</button></Link>
+          <Link to='/' ><button className={Styles.cancelar} >PAGINA INICIAL</button></Link>
+          
         </div>
       </form>
     </div>
