@@ -46,8 +46,8 @@ const EditProducts = () => {
 
       dispatch(updateProducts(postData))
       alert("Produto editado com sucesso")
-      navigate('/')
-      window.location.reload();
+    navigate("/")
+    window.location.reload()
     }
   return (
     <div className='text-center'>
@@ -86,7 +86,7 @@ const EditProducts = () => {
        </div>
        <div className='justify-content-center'>
 
-       <Link  to='/' ><button className={Styles.cancelar} >Cancelar</button></Link>
+       <Link  to='/' ><button className={Styles.cancelar} >PAGINA INICIAL</button></Link>
        </div>
     </form>
     </div>
