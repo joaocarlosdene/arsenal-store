@@ -30,7 +30,8 @@ const Formulario = () => {
     e.preventDefault();
 
     dispatch(postProducts(postData))
-    
+    navigate("/")
+    window.location.reload();
   }
   return (
     <div className='d-flex justify-content-center'>
