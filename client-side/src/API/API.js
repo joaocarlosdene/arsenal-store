@@ -31,10 +31,11 @@ const SignUp = 'http://localhost:5000/users/signUp'
 export const postProducts = createAsyncThunk('products/postProducts', async (data) => {
     try {
         const response = await axios.post(URL, data)
+        console.log("Deu certo")
         return response.data;
     } catch (error) {
-        console.error(error)
         console.log("Deu errado")
+        console.error(error)
     }
 });
 
