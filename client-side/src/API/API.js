@@ -3,7 +3,8 @@ import axios from 'axios';
 
 
 
-const URL = 'http://localhost:5000/products';
+const URL = 'https://arsenal-store.vercel.app/products';
+//const URL = 'http://localhost:5000/products'; (Usar essa para ambiente local)
 const Login = 'http://localhost:5000/users/login'
 const SignUp = 'http://localhost:5000/users/signUp'
 
